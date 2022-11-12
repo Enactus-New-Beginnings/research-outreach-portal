@@ -9,14 +9,12 @@
     <br/> <button onClick = "onSubmit()" >Submit</button> 
 
     <script>
-    //need to alert user if password has correctly been entered and data has been updated (200 request)
         function onSubmit(){
             let food = document.getElementById("food").checked
             let clothing = document.getElementById("clothing").checked
             let shelter = document.getElementById("shelter").checked
             let pw = document.getElementById("pw").value
 
-            //need to fix url
             let link = 'https://us-central1-newbeginnings-7fed9.cloudfunctions.net/widgets/resources/'+pw+'/'
             let firstIsThere = false;
             if(food){
