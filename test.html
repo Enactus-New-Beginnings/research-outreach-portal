@@ -9,6 +9,7 @@
     <br/> <button onClick = "onSubmit()" >Submit</button> 
 
     <script>
+    //need to alert user if password has correctly been entered and data has been updated (200 request)
         function onSubmit(){
             let food = document.getElementById("food").checked
             let clothing = document.getElementById("clothing").checked
@@ -31,18 +32,22 @@
             }           
             if(shelter) {
                 if(!firstIsThere){
-                    link+="shelter";
+                    link+="housing";
                     firstIsThere=true;
                 }
-                else link+=",shelter";
+                else link+=",housing";
             }
 
-            //string for debugging
-            let ds = "";    
             console.log(link)
             postData(link,{})
-                .then((response)=> {console.log(response)})
+                .then((response) => {getResponse(response)})
             
+        }
+        
+        function getResponse(response){
+            console.log(response);
+            if(response=="not authenticated") alert("Error contacting database: Please check password");
+            else alert("Database succesfully updated");
         }
 
         async function postData(url = '', data = {}) {
