@@ -5,6 +5,7 @@
     <input type = "checkbox" id= "food"/> Food <br/>
     <input type = "checkbox" id= "clothing"/> Clothing <br/>
     <input type = "checkbox" id= "shelter"/> Shelter <br/>
+    <input type = "checkbox" id= "employment"/> Employment <br/>
     <br/> Input Password <br/> <input type="password" id="pw"/><br/>
     <br/> <button onClick = "onSubmit()" >Submit</button> 
 
@@ -13,6 +14,7 @@
             let food = document.getElementById("food").checked
             let clothing = document.getElementById("clothing").checked
             let shelter = document.getElementById("shelter").checked
+            let employment = document.getElementById("employment").checked
             let pw = document.getElementById("pw").value
 
             let link = 'https://us-central1-newbeginnings-7fed9.cloudfunctions.net/widgets/resources/'+pw+'/'
@@ -34,6 +36,13 @@
                     firstIsThere=true;
                 }
                 else link+=",housing";
+            }
+            if(employment) {
+                if(!firstIsThere){
+                    link+="employment";
+                    firstIsThere=true;
+                }
+                else link+=",employment";
             }
 
             console.log(link)
